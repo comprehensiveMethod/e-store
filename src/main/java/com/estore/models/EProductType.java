@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Getter
 @Setter
@@ -27,4 +28,7 @@ public class EProductType implements Serializable {
      */
     @Column(name = "type", nullable = false, length = 100)
     String type;
+
+    @OneToMany(mappedBy = "typeId")
+    List<EProduct> eProductList;
 }

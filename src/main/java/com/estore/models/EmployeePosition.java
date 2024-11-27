@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,4 +24,6 @@ public class EmployeePosition {
     @Column(name = "position", nullable = false, length = 100)
     String position;
 
+    @OneToMany(mappedBy = "position")
+    List<Employee> employeeList;
 }

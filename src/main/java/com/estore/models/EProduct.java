@@ -1,12 +1,6 @@
 package com.estore.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.TableGenerator;
+import javax.persistence.*;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -37,8 +31,9 @@ public class EProduct implements Serializable {
     /**
      * Идентификатор электронного типа товара
      */
-    @Column(name="typeId", nullable = false)
-    int typeId;
+    @ManyToOne
+    @JoinColumn(name="typeId",foreignKey = @ForeignKey(name = "FK_EPRODUCT_TYPE"))
+    EProductType typeId;
 
     /**
      * Цена товара
